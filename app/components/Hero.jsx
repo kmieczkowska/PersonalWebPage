@@ -34,7 +34,7 @@ const Hero = () => {
   }, [charIndex, isDeleting, wordIndex])
 
   return (
-    <section id="main" className="scroll-mt-32 bg-[#0B192C] min-h-screen flex items-center justify-center text-white px-4 mx-auto">
+    <section id="main" className="scroll-mt-32 bg-[#0C0C0C] min-h-screen flex items-center justify-center  text-white px-4 mx-auto pb-80">
       <div className="max-w-xl space-y-4 mr-20">
         <p className="text-sm text-yellow-400">Hello World, I’m</p>
         <h1 className="text-4xl text-white font-bold">Klaudia Mieczkowska </h1>
@@ -46,7 +46,7 @@ const Hero = () => {
       </div>
 
       <div className="relative">
-        <div className="w-72 h-72 rounded-full border-4 border-[#EEB76B] overflow-hidden shadow-[0_0_60px_20px_#EEB76B]">
+        <div className="w-100 h-100 rounded-full border-4 border-[#EEB76B] overflow-hidden shadow-[0_0_60px_20px_#EEB76B]">
           <Image
             src="/me.png"
             alt="Avatar"
