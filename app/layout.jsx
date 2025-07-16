@@ -5,7 +5,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Logo from "./components/Logo";
-import Nav from "./components/Nav"; // Usuń jeśli Nav jest już w Header
+import AboutSection from "./components/AboutSection";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,9 +27,6 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Header />
-        <Hero />
-        <Logo />
-        {/* <Nav /> ← usuń jeśli Nav jest w Header */}
         {children}
       </body>
     </html>
