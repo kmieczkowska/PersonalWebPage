@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react';
 import Image from "next/image";
+import { motion } from 'framer-motion'; // animation
 import { 
   FileCode, 
   Terminal, 
@@ -34,59 +35,59 @@ const AboutSection = () => {
     "Advanced": 1,
     "Intermediate": 2,
     "Basic": 3
-    }
+  }
 
   const techStack = [
-  { name: "Python", level: "Intermediate", icon: <FileCode className="text-blue-300" /> },
-  { name: "Java", level: "Advanced", icon: <Code2 className="text-red-400" /> },
-  { name: "C#", level: "Advanced", icon: <Terminal className="text-purple-500" /> },
-  { name: "C++", level: "Basic", icon: <Cpu className="text-blue-600" /> },
-  { name: "Javascript", level: "Intermediate", icon: <FileCode className="text-yellow-400" /> },
-  { name: "React", level: "Advanced", icon: <Zap className="text-cyan-400" /> },
-  { name: "Android", level: "Advanced", icon: <Smartphone className="text-green-400" /> },
-  { name: "SQL", level: "Intermediate", icon: <Database className="text-blue-400" /> },
-];
+    { name: "Python", level: "Intermediate", icon: <FileCode className="text-blue-300" /> },
+    { name: "Java", level: "Advanced", icon: <Code2 className="text-red-400" /> },
+    { name: "C#", level: "Advanced", icon: <Terminal className="text-purple-500" /> },
+    { name: "C++", level: "Basic", icon: <Cpu className="text-blue-600" /> },
+    { name: "Javascript", level: "Intermediate", icon: <FileCode className="text-yellow-400" /> },
+    { name: "React", level: "Advanced", icon: <Zap className="text-cyan-400" /> },
+    { name: "Android", level: "Advanced", icon: <Smartphone className="text-green-400" /> },
+    { name: "SQL", level: "Intermediate", icon: <Database className="text-blue-400" /> },
+  ];
 
-const tools = [
-  { name: "Jira", level: "Intermediate", icon: <Settings className="text-blue-500" /> },
-  { name: "Confluence", level: "Intermediate", icon: <Layers className="text-blue-400" /> },
-  { name: "TestLink", level: "Advanced", icon: <ShieldCheck className="text-green-500" /> },
-  { name: "XRay", level: "Advanced", icon: <Zap className="text-orange-400" /> },
-  { name: "BrowserStack", level: "Advanced", icon: <Globe className="text-indigo-400" /> },
-  { name: "Postman", level: "Advanced", icon: <Zap className="text-orange-500" /> },
-  { name: "JMeter", level: "Intermediate", icon: <BarChart3 className="text-red-400" /> },
-  { name: "Cypress", level: "Intermediate", icon: <ShieldCheck className="text-emerald-500" /> },
-  { name: "Jenkins", level: "Basic", icon: <Settings className="text-red-600" /> },
-  { name: "Docker", level: "Basic", icon: <Container className="text-blue-400" /> },
-  { name: "Git", level: "Advanced", icon: <GitBranch className="text-orange-500" /> },
-  { name: "GitHub", level: "Advanced", icon: <Github className="text-white" /> },
-  { name: "Grafana", level: "Basic", icon: <BarChart3 className="text-yellow-500" /> },
-  { name: "UML", level: "Intermediate", icon: <Workflow className="text-emerald-400" /> },
-];
+  const tools = [
+    { name: "Jira", level: "Intermediate", icon: <Settings className="text-blue-500" /> },
+    { name: "Confluence", level: "Intermediate", icon: <Layers className="text-blue-400" /> },
+    { name: "TestLink", level: "Advanced", icon: <ShieldCheck className="text-green-500" /> },
+    { name: "XRay", level: "Advanced", icon: <Zap className="text-orange-400" /> },
+    { name: "BrowserStack", level: "Advanced", icon: <Globe className="text-indigo-400" /> },
+    { name: "Postman", level: "Advanced", icon: <Zap className="text-orange-500" /> },
+    { name: "JMeter", level: "Intermediate", icon: <BarChart3 className="text-red-400" /> },
+    { name: "Cypress", level: "Intermediate", icon: <ShieldCheck className="text-emerald-500" /> },
+    { name: "Jenkins", level: "Basic", icon: <Settings className="text-red-600" /> },
+    { name: "Docker", level: "Basic", icon: <Container className="text-blue-400" /> },
+    { name: "Git", level: "Advanced", icon: <GitBranch className="text-orange-500" /> },
+    { name: "GitHub", level: "Advanced", icon: <Github className="text-white" /> },
+    { name: "Grafana", level: "Basic", icon: <BarChart3 className="text-yellow-500" /> },
+    { name: "UML", level: "Intermediate", icon: <Workflow className="text-emerald-400" /> },
+  ];
 
-const software = [
-  { name: "VS Code", level: "Advanced", icon: <Layout className="text-blue-400" /> },
-  { name: "Visual Studio", level: "Advanced", icon: <Layout className="text-purple-500" /> },
-  { name: "Android Studio", level: "Advanced", icon: <Smartphone className="text-green-500" /> },
-  { name: "IntelliJ", level: "Advanced", icon: <Code2 className="text-pink-500" /> },
-  { name: "PyCharm", level: "Advanced", icon: <Code2 className="" /> },
-  { name: "pgAdmin", level: "Basic", icon: <Database className="text-blue-300" /> },
-  { name: "DBeaver", level: "Basic", icon: <Database className="text-orange-300" /> },
-  { name: "SQLDeveloper", level: "Intermediate", icon: <Database className="text-red-400" /> },
-  { name: "VMware", level: "Advanced", icon: <Box className="text-gray-400" /> },
-  { name: "Azure", level: "Basic", icon: <Cloud className="text-blue-500" /> },
-  { name: "Windows", level: "Advanced", icon: <Monitor className="text-blue-400" /> },
-  { name: "Linux", level: "Advanced", icon: <Laptop className="text-yellow-600" /> },
-  { name: "Figma", level: "Intermediate", icon: <PenTool className="text-pink-400" /> },
-];
+  const software = [
+    { name: "VS Code", level: "Advanced", icon: <Layout className="text-blue-400" /> },
+    { name: "Visual Studio", level: "Advanced", icon: <Layout className="text-purple-500" /> },
+    { name: "Android Studio", level: "Advanced", icon: <Smartphone className="text-green-500" /> },
+    { name: "IntelliJ", level: "Advanced", icon: <Code2 className="text-pink-500" /> },
+    { name: "PyCharm", level: "Advanced", icon: <Code2 className="" /> },
+    { name: "pgAdmin", level: "Basic", icon: <Database className="text-blue-300" /> },
+    { name: "DBeaver", level: "Basic", icon: <Database className="text-orange-300" /> },
+    { name: "SQLDeveloper", level: "Intermediate", icon: <Database className="text-red-400" /> },
+    { name: "VMware", level: "Advanced", icon: <Box className="text-gray-400" /> },
+    { name: "Azure", level: "Basic", icon: <Cloud className="text-blue-500" /> },
+    { name: "Windows", level: "Advanced", icon: <Monitor className="text-blue-400" /> },
+    { name: "Linux", level: "Advanced", icon: <Laptop className="text-yellow-600" /> },
+    { name: "Figma", level: "Intermediate", icon: <PenTool className="text-pink-400" /> },
+  ];
 
-const tabs = {
+  const tabs = {
     tech: techStack,
     tools: tools,
     software: software
   };
 
-const currentSkills = [...tabs[activeTab]].sort((a, b) => {
+  const currentSkills = [...tabs[activeTab]].sort((a, b) => {
     if (levelWeight[a.level] !== levelWeight[b.level]) {
       return levelWeight[a.level] - levelWeight[b.level];
     }
@@ -94,8 +95,14 @@ const currentSkills = [...tabs[activeTab]].sort((a, b) => {
   });
 
   return (
-    <section className="w-full">
-      <div className="bg-[#121212] rounded-2xl p-10 flex flex-col gap-10 border-2 border-[#FFD700] shadow-[0_0_20px_rgba(255,215,0,0.15)]">
+    <section className="w-full overflow-hidden px-1 py-4">
+      {/* about me animation - from the right */}
+      <motion.div 
+        initial={{ x: 100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="bg-[#121212] rounded-2xl p-10 flex flex-col gap-10 border-2 border-[#FFD700] shadow-[0_0_20px_rgba(255,215,0,0.15)]"
+      >
         <div className="flex items-center">
           <h2 className="text-2xl font-bold text-white title-section whitespace-nowrap font-mono tracking-tight">
             About Me
@@ -116,30 +123,37 @@ const currentSkills = [...tabs[activeTab]].sort((a, b) => {
             </div>
           </div>
 
-        <div className="text-gray-300 font-mono text-sm md:text-base leading-relaxed max-w-2xl">
-          <p className="mb-4">
-            Hi everyone! My name is <span className="text-[#FFD700] font-bold">Klaudia Mieczkowska</span>. 
-            I’m a <span className="text-[#FFD700] font-bold">Junior Manual Tester</span> from Poland, Białystok.
-          </p>
-          
-          <p>
-            My journey in IT began with <span className="font-bold text-white underline decoration-[#FFD700]/40">one year of experience</span> as a <span className="font-bold text-white">Full-stack Developer</span>. 
-            This background gave me a unique perspective on Quality Assurance – I don't just find bugs; I <span className="font-bold text-white">understand the architecture</span> behind them. 
-            My experience with both frontend and backend allows me to <span className="font-bold text-white">look 'under the hood'</span> and communicate effectively with development teams.
-          </p>
-          
-          <p className="mt-4">
-            I believe that great software is a blend of flawless logic and aesthetic value. Today, I use my <span className="font-bold text-white">developer's mindset</span> to ensure that every application I test is stable, functional, and user-friendly.
-          </p>
+          <div className="text-gray-300 font-mono text-sm md:text-base leading-relaxed max-w-2xl">
+            <p className="mb-4">
+              Hi everyone! My name is <span className="text-[#FFD700] font-bold">Klaudia Mieczkowska</span>. 
+              I’m a <span className="text-[#FFD700] font-bold">Junior Manual Tester</span> from Poland, Białystok.
+            </p>
+            
+            <p>
+              My journey in IT began with <span className="font-bold text-white underline decoration-[#FFD700]/40">one year of experience</span> as a <span className="font-bold text-white">Full-stack Developer</span>. 
+              This background gave me a unique perspective on Quality Assurance – I don't just find bugs; I <span className="font-bold text-white">understand the architecture</span> behind them. 
+              My experience with both frontend and backend allows me to <span className="font-bold text-white">look 'under the hood'</span> and communicate effectively with development teams.
+            </p>
+            
+            <p className="mt-4">
+              I believe that great software is a blend of flawless logic and aesthetic value. Today, I use my <span className="font-bold text-white">developer's mindset</span> to ensure that every application I test is stable, functional, and user-friendly.
+            </p>
 
-          <p className="mt-6 border-l-2 border-[#FFD700] pl-4 italic text-gray-400">
-            "My mission is simple: to help build digital products that are as <span className="text-[#FFD700]">reliable</span> as they are beautiful."
-          </p>
+            <p className="mt-6 border-l-2 border-[#FFD700] pl-4 italic text-gray-400">
+              "My mission is simple: to help build digital products that are as <span className="text-[#FFD700]">reliable</span> as they are beautiful."
+            </p>
+          </div>
         </div>
-        </div>
-      </div>
+      </motion.div>
 
-      <div className="mt-16">
+      {/* skills animation - from down */}
+      <motion.div 
+        initial={{ y: 50, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="mt-16"
+      >
         <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4">
           <div className="flex items-center">
             <h2 className="text-xl font-bold text-white title-section whitespace-nowrap font-mono">
@@ -180,7 +194,6 @@ const currentSkills = [...tabs[activeTab]].sort((a, b) => {
                   {skill.name}
                 </span>
                 
-                {/* STOPIEŃ ZNAJOMOŚCI - POJAWIA SIĘ NA HOVER */}
                 <span className="text-[#FFD700] font-mono text-[10px] uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
                   {skill.level}
                 </span>
@@ -188,9 +201,9 @@ const currentSkills = [...tabs[activeTab]].sort((a, b) => {
             </div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
 
-export default AboutSection;  
+export default AboutSection;
