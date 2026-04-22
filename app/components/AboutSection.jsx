@@ -116,19 +116,26 @@ const currentSkills = [...tabs[activeTab]].sort((a, b) => {
             </div>
           </div>
 
-          <div className="text-gray-300 font-mono text-sm md:text-base leading-relaxed max-w-2xl">
-            <p className="mb-4">
-              Hi everyone! My name is <span className="text-[#FFD700] font-bold">Klaudia Mieczkowska</span>. 
-              I’m a manual tester from Poland, Białystok.
-            </p>
-            <p>
-              I have 1 year of experience as a full-stack developer. I really enjoy what I do right now. 
-              In my opinion, creating programs is not just a job, but also an art that has aesthetic value.
-            </p>
-            <p className="mt-4 border-l-2 border-[#FFD700] pl-4 italic text-gray-400">
-              "My goal is to build your website to be functional and user-friendly yet still attractive."
-            </p>
-          </div>
+        <div className="text-gray-300 font-mono text-sm md:text-base leading-relaxed max-w-2xl">
+          <p className="mb-4">
+            Hi everyone! My name is <span className="text-[#FFD700] font-bold">Klaudia Mieczkowska</span>. 
+            I’m a <span className="text-[#FFD700] font-bold">Junior Manual Tester</span> from Poland, Białystok.
+          </p>
+          
+          <p>
+            My journey in IT began with <span className="font-bold text-white underline decoration-[#FFD700]/40">one year of experience</span> as a <span className="font-bold text-white">Full-stack Developer</span>. 
+            This background gave me a unique perspective on Quality Assurance – I don't just find bugs; I <span className="font-bold text-white">understand the architecture</span> behind them. 
+            My experience with both frontend and backend allows me to <span className="font-bold text-white">look 'under the hood'</span> and communicate effectively with development teams.
+          </p>
+          
+          <p className="mt-4">
+            I believe that great software is a blend of flawless logic and aesthetic value. Today, I use my <span className="font-bold text-white">developer's mindset</span> to ensure that every application I test is stable, functional, and user-friendly.
+          </p>
+
+          <p className="mt-6 border-l-2 border-[#FFD700] pl-4 italic text-gray-400">
+            "My mission is simple: to help build digital products that are as <span className="text-[#FFD700]">reliable</span> as they are beautiful."
+          </p>
+        </div>
         </div>
       </div>
 
