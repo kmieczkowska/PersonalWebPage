@@ -2,8 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-// ZMIENIONA IKONA TUTAJ
-import { ArrowRight } from 'lucide-react'
+import { FileText, ArrowUp } from 'lucide-react'
 
 const Hero = () => {
   const words = ['Manual Tester', 'Programming Trainer']
@@ -12,12 +11,6 @@ const Hero = () => {
   const [wordIndex, setWordIndex] = useState(0)
   const [charIndex, setCharIndex] = useState(0)
 
-  // TEKST CV
-  const contactFullText = "Click me to get my CV();"
-  const [contactText, setContactText] = useState('')
-  const [contactCharIndex, setContactCharIndex] = useState(0)
-
-  // Efekt pisania dla ról (bez zmian)
   useEffect(() => {
     let timer
     if (!isDeleting && charIndex <= words[wordIndex].length) {
@@ -36,69 +29,38 @@ const Hero = () => {
     return () => clearTimeout(timer)
   }, [charIndex, isDeleting, wordIndex])
 
-  // Efekt pisania dla tekstu CV (bez zmian)
-  useEffect(() => {
-    if (contactCharIndex <= contactFullText.length) {
-      const timer = setTimeout(() => {
-        setContactText(contactFullText.substring(0, contactCharIndex))
-        setContactCharIndex(contactCharIndex + 1)
-      }, 100) 
-      return () => clearTimeout(timer)
-    }
-  }, [contactCharIndex, contactFullText])
-
   return (
+    <section className="relative w-full min-h-[calc(100vh-80px)] flex flex-col md:flex-row items-center justify-center bg-[#0C0C0C] text-white px-6 gap-12 md:gap-24 overflow-hidden">
 
-<section className="relative w-full min-h-[calc(100vh-80px)] flex flex-col md:flex-row items-center justify-center bg-[#0C0C0C] text-white px-4 gap-20 overflow-hidden">
-  {/* TEKST */}
-  <div className="max-w-xl space-y-4 flex flex-col justify-center text-center md:text-left">
-    <p className="text-base text-yellow-400">Hello World, I’m</p>
-    <h1 className="text-4xl text-white font-bold">Klaudia Mieczkowska</h1>
-    <h2 className="text-2xl text-yellow-400 font-mono h-[32px]">
-      {text}
-      <span className="border-r-2 border-yellow-400 animate-blink ml-1" />
-    </h2>
-    {/* <p className="text-sm text-gray-400">Welcome to my personal website.</p> */}
-  </div>
+      {/* info */}
+      <div className="max-w-xl space-y-6 flex flex-col justify-center text-center md:text-left z-10">
+        <div className="space-y-2">
+          <p className="text-base text-yellow-400 font-mono tracking-widest">Hello World, I’m</p>
+          <h1 className="text-5xl md:text-6xl text-white font-bold tracking-tight">
+            Klaudia <span className="text-white">Mieczkowska</span>
+          </h1>
+          <h2 className="text-2xl md:text-3xl text-yellow-400 font-mono h-[40px] flex items-center justify-center md:justify-start">
+            {text}
+            <span className="border-r-2 border-yellow-400 animate-pulse ml-1" />
+          </h2>
+        </div>
+      </div>
 
-  {/* AVATAR */}
-  <div className="relative shrink-0">
-    <div className="w-100 h-100 rounded-full border-4 border-[#EEB76B] overflow-hidden shadow-[0_0_60px_20px_#EEB76B]">
-      <Image
-        src="/raven.jpg"
-        alt="Avatar"
-        width={300}
-        height={300}
-        className="object-cover w-full h-full"
-      />
-    </div>
+      {/* avatar */}
+      <div className="relative shrink-0">
+        <div className="w-80 h-80 md:w-100 md:h-100 rounded-full border-4 border-yellow-400 overflow-hidden shadow-[0_0_60px_20px_rgba(250,204,21,0.5)]">
+          <Image
+            src="/raven.jpg"
+            alt="Avatar"
+            width={400}
+            height={400}
+            className="object-cover w-full h-full"
+          />
+        </div>
+        <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-yellow-400/10 blur-[120px] rounded-full"></div>
+      </div>
 
-{/* OVERLAY CTA */}
-  <Link
-    href="/cv.pdf"
-    target="_blank"
-    className="absolute inset-0 flex flex-col items-center justify-center text-center cursor-pointer"
-  >
-    <div className="bg-black/40 backdrop-blur-sm px-4 py-2 rounded-xl flex items-center gap-2 animate-pulse group-hover:scale-110 transition">
-      
-      <span className="text-yellow-400 font-mono text-lg">
-        get my cv
-      </span>
-
-      <ArrowRight className="text-yellow-400 w-5 h-5" />
-    </div>
-  </Link>
-
-
-    <Link
-      href="/cv.pdf"
-      target="_blank"
-      className="absolute -bottom-24 left-1/2 -translate-x-1/2 flex flex-col items-center group cursor-pointer transition-all whitespace-nowrap"
-    >
-    </Link>
-  </div>
-
-</section>
+    </section>
   )
 }
 
