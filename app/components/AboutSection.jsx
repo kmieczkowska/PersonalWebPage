@@ -24,7 +24,8 @@ import {
   Cloud,
   Laptop,
   PenTool, 
-  Workflow
+  Workflow,
+  Server
 } from 'lucide-react';
 
 const AboutSection = () => {
@@ -46,6 +47,7 @@ const AboutSection = () => {
     { name: "React", level: "Advanced", icon: <Zap className="text-cyan-400" /> },
     { name: "Android", level: "Advanced", icon: <Smartphone className="text-green-400" /> },
     { name: "SQL", level: "Intermediate", icon: <Database className="text-blue-400" /> },
+    { name: "Django", level: "Basic", icon: <Server className="text-green-600" /> },
   ];
 
   const tools = [
@@ -55,6 +57,7 @@ const AboutSection = () => {
     { name: "XRay", level: "Advanced", icon: <Zap className="text-orange-400" /> },
     { name: "BrowserStack", level: "Advanced", icon: <Globe className="text-indigo-400" /> },
     { name: "Postman", level: "Advanced", icon: <Zap className="text-orange-500" /> },
+    { name: "REST API", level: "Intermediate", icon: <Globe className=" text-blue-400" /> },
     { name: "JMeter", level: "Intermediate", icon: <BarChart3 className="text-red-400" /> },
     { name: "Cypress", level: "Intermediate", icon: <ShieldCheck className="text-emerald-500" /> },
     { name: "Jenkins", level: "Basic", icon: <Settings className="text-red-600" /> },
