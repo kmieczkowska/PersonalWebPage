@@ -15,10 +15,10 @@ const Hero = () => {
     let timer
     if (!isDeleting && charIndex <= words[wordIndex].length) {
       setText(words[wordIndex].substring(0, charIndex))
-      timer = setTimeout(() => setCharIndex(charIndex + 1), 150)
+      timer = setTimeout(() => setCharIndex(charIndex + 1), 80)
     } else if (isDeleting && charIndex >= 0) {
       setText(words[wordIndex].substring(0, charIndex))
-      timer = setTimeout(() => setCharIndex(charIndex - 1), 75)
+      timer = setTimeout(() => setCharIndex(charIndex - 1), 40)
     } else if (!isDeleting && charIndex > words[wordIndex].length) {
       timer = setTimeout(() => setIsDeleting(true), 1000)
     } else if (isDeleting && charIndex < 0) {
