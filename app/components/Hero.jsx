@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { FileText, ArrowUp } from 'lucide-react'
 
 const Hero = () => {
-  const words = ['Manual Tester', 'Programming Trainer']
+  const words = ['Manual Tester', 'Programming Trainer', 'Full-stack Developer']
   const [text, setText] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
   const [wordIndex, setWordIndex] = useState(0)
