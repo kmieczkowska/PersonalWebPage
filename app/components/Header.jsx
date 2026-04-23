@@ -24,7 +24,7 @@ const Header = () => {
           
       <div className="relative flex flex-col items-center z-50">
         <Link 
-          href="/cv_tester_16.04.pdf" 
+          href="/cv_tester_k.mieczkowska.pdf" 
           target="_blank" 
           rel="noopener noreferrer"
           className="transition-transform hover:scale-110"

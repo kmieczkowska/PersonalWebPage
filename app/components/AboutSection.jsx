@@ -123,26 +123,30 @@ const AboutSection = () => {
             </div>
           </div>
 
-          <div className="text-gray-300 font-mono text-sm md:text-base leading-relaxed max-w-2xl">
-            <p className="mb-4">
-              Hi everyone! My name is <span className="text-[#FFD700] font-bold">Klaudia Mieczkowska</span>. 
-              I’m a <span className="text-[#FFD700] font-bold">Junior Manual Tester</span> from Poland, Białystok.
-            </p>
-            
-            <p>
-              My journey in IT began with <span className="font-bold text-white underline decoration-[#FFD700]/40">one year of experience</span> as a <span className="font-bold text-white">Full-stack Developer</span>. 
-              This background gave me a unique perspective on Quality Assurance – I don't just find bugs; I <span className="font-bold text-white">understand the architecture</span> behind them. 
-              My experience with both frontend and backend allows me to <span className="font-bold text-white">look 'under the hood'</span> and communicate effectively with development teams.
-            </p>
-            
-            <p className="mt-4">
-              I believe that great software is a blend of flawless logic and aesthetic value. Today, I use my <span className="font-bold text-white">developer's mindset</span> to ensure that every application I test is stable, functional, and user-friendly.
-            </p>
+<div className="text-white text-l leading-relaxed max-w-4xl">
+  <p>
+    Hi! I'm <span className="text-[#FFD700] font-bold">Klaudia Mieczkowska</span>, 
+    a <span className="text-[#FFD700] font-bold">Full-stack Developer</span> transitioning into 
+    <span className="text-[#FFD700] font-bold"> Quality Assurance </span> with a 
+    <span className="font-bold underline decoration-[#FFD700]/40"> Master of Engineering in Computer Science</span>.
+  </p>
+  
+<p className="mt-6">
+  Graduating from <span className="font-bold">Bialystok University of Technology</span> and spending 
+  <span className="font-bold"> a year as a Full-stack Developer</span> has shaped my 
+  <span className="text-[#FFD700] font-semibold"> 'developer's mindset.'</span> I don't just execute test cases -
+  <br />I approach Quality Assurance with an analytical, engineering-driven perspective.
+</p>
+  
+  <p className="mt-6">
+    Having built applications from scratch, I can <span className="font-bold">pinpoint exactly where logic might fail and why</span>. 
+    My background allows me to bridge the technical gap between testing and development, translating complex bugs into actionable insights for the dev team.
+  </p>
 
-            <p className="mt-6 border-l-2 border-[#FFD700] pl-4 italic text-gray-400">
+  <p className="mt-6 border-l-2 border-[#FFD700] pl-4 italic text-gray-400">
               "My mission is simple: to help build digital products that are as <span className="text-[#FFD700]">reliable</span> as they are beautiful."
-            </p>
-          </div>
+    </p>
+</div>
         </div>
       </motion.div>
 
