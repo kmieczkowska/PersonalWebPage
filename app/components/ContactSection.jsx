@@ -1,9 +1,17 @@
 'use client'
-import React from 'react';
-import { motion } from 'framer-motion'; // Importujemy motion
-import { Mail, Phone, MapPin, Send, Linkedin, Github } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Mail, Phone, MapPin, Send, Linkedin, Github, Copy, Check } from 'lucide-react';
 
 const ContactSection = () => {
+  const [copiedText, setCopiedText] = useState("");
+
+  const handleCopy = (text) => {
+    navigator.clipboard.writeText(text);
+    setCopiedText(text);
+    setTimeout(() => setCopiedText(""), 2000);
+  };
+
   const socials = [
     { 
       Icon: Mail, 
@@ -22,7 +30,8 @@ const ContactSection = () => {
     }
   ];
 
-  // Warianty dla ikon społecznościowych (pojawianie się jedna po drugiej)
+
+  // icon animations -> one after other
   const socialVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: (i) => ({
@@ -40,7 +49,7 @@ const ContactSection = () => {
     <section className="w-full py-20 bg-[#0a0a0a] text-white overflow-hidden">
       <div className="max-w-5xl mx-auto px-4">
         
-        {/* NAGŁÓWEK - Animacja wjazdu z góry */}
+        {/* animation from the top */}
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -56,7 +65,7 @@ const ContactSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
           
-          {/* LEWA KOLUMNA - Info - Wjazd z lewej */}
+          {/* animation from the left */}
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -76,7 +85,7 @@ const ContactSection = () => {
               {[
                 { Icon: Phone, label: "Call Me", val: "+48 574 163 987", href: "tel:+48574163987" },
                 { Icon: Mail, label: "Email Me", val: "klaudia.mieczkowska01@gmail.com", href: "mailto:klaudia.mieczkowska01@gmail.com" },
-                { Icon: MapPin, label: "Location", val: "Białystok, Poland", href: null },
+                { Icon: MapPin, label: "Location", val: "Białystok, Poland", workMode: "Office / Remote / Hybrid (Warszawa)", href: null },
               ].map((item, idx) => (
                 <motion.div 
                   key={idx}
@@ -84,26 +93,50 @@ const ContactSection = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 + (idx * 0.1) }}
-                  className="flex items-center gap-4 group"
+                  className="flex items-center gap-4 group relative"
                 >
+                  {/* Main icon */}
                   <div className="p-3 bg-[#121212] border border-white/5 rounded-lg group-hover:border-[#FFD700]/50 transition-colors">
                     <item.Icon className="text-[#FFD700] w-5 h-5" />
                   </div>
+
                   <div>
                     <p className="text-xs text-gray-500 uppercase tracking-widest">{item.label}</p>
-                    {item.href ? (
-                      <a href={item.href} className="text-gray-200 hover:text-[#FFD700] transition-colors font-medium">
-                        {item.val}
-                      </a>
-                    ) : (
-                      <p className="text-gray-200 font-medium">{item.val}</p>
-                    )}
+                    <div className="flex flex-col"> 
+                      <div className="flex items-center gap-2">
+                        {item.href ? (
+                          <a href={item.href} className="text-gray-200 hover:text-[#FFD700] transition-colors font-medium">
+                            {item.val}
+                          </a>
+                        ) : (
+                          <p className="text-gray-200 font-medium">{item.val}</p>
+                        )}
+
+                        {item.label !== "Location" && (
+                          <button
+                            onClick={() => handleCopy(item.val)}
+                            className="p-1.5 rounded-md hover:bg-white/10 text-gray-500 hover:text-[#FFD700] transition-all relative"
+                          >
+                            {copiedText === item.val ? (
+                              <Check size={14} className="text-green-500" />
+                            ) : (
+                              <Copy size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                            )}
+                          </button>
+                        )}
+                      </div>
+                      {item.workMode && (
+                        <p className="text-[11px] text-[#FFD700]/70 font-mono mt-0.5">
+                          {item.workMode}
+                        </p>
+                      )}
+                    </div>
                   </div>
                 </motion.div>
               ))}
             </div>
 
-            {/* IKONY SOCIAL MEDIA - Animacja kaskadowa */}
+            {/* icons animation */}
             <div className="flex gap-4 pt-4">
               {socials.map(({ Icon, href, label }, i) => (
                 <motion.a 
@@ -126,7 +159,7 @@ const ContactSection = () => {
             </div>
           </motion.div>
 
-          {/* PRAWA KOLUMNA - Formularz - Wjazd z prawej + delikatny Scale */}
+          {/* animation from the right */}
           <motion.div 
             initial={{ opacity: 0, x: 50, scale: 0.95 }}
             whileInView={{ opacity: 1, x: 0, scale: 1 }}
@@ -134,7 +167,7 @@ const ContactSection = () => {
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="relative"
           >
-            {/* Dekoracyjna poświata w tle */}
+            {/* background setup */}
             <div className="absolute -inset-4 bg-[#FFD700]/5 rounded-3xl blur-2xl" />
             
             <form className="relative bg-[#121212] border border-white/10 p-8 rounded-2xl shadow-2xl space-y-4">
