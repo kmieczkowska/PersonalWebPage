@@ -18,13 +18,13 @@ const PortfolioSection = () => {
       status: "green" 
     },
     {
-      title: "Sahabat Muslim",
-      description: "A responsive web application designed to provide easy access to the Quran. Focused on accessibility and mobile-first design.",
-      tech: ["VueJS 3", "Tailwind", "API"],
-      image: "/me.png",
+      title: "PathFinderSoftware",
+      description: "This project focuses on the analysis and comparison of image sensors and data processing architectures used in navigation systems. A mobile robot was employed as the main research platform, supported by a webcam and infrared sensors. The study included optimization of image quality and sensor data accuracy, followed by the development and testing of various image processing strategies. The results were used to compare the effectiveness of individual solutions in navigation applications.",
+      tech: ["Java", "Jupyter Notebook"],
+      image: "/connect_torobot.png",
       link: "f",
-      github: "#",
-      status: "red"
+      github: "https://github.com/kmieczkowska/PathFinderSofware",
+      status: "green"
     },
     {
       title: "SISTEKDES",
@@ -193,7 +193,7 @@ const PortfolioSection = () => {
                   onClick={() => setSelectedProject(null)}
                   className="text-sm text-gray-400 hover:text-white"
                 >
-                  Zamknij
+                  Close
                 </button>
               </div>
             </div>
