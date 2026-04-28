@@ -27,22 +27,22 @@ const PortfolioSection = () => {
       status: "green"
     },
     {
-      title: "SISTEKDES",
-      description: "Village Information System to assist local governments in administration and population data management.",
-      tech: ["Laravel 9", "Bootstrap", "MySQL"],
-      image: "/me.png",
+      title: "Jajkolator",
+      description: "An application designed to calculate the profitability of chicken farming. The application accepts input data such as: egg price, number of eggs, hatch rate (%), feed tonnage, feed price per ton, and other operating costs. Based on this data, the application calculates the daily profit, as well as the weekly and monthly profit.",
+      tech: ["Java"],
+      image: "/jajkulator.png",
       link: "f",
-      github: "#",
+      github: "https://github.com/kmieczkowska/Jajkulator",
       status: "green"
     },
     {
-      title: "Test Project",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex voluptates alias vitae cum fuga explicabo, distinctio itaque voluptatum.",
-      tech: ["Laravel 9", "Bootstrap", "MySQL"],
-      image: "/me.png",
+      title: "WeeksCalculator",
+      description: "An application designed to calculate the number of weeks and days between selected dates. The application allows the user to choose a start date and an end date, then displays the time interval in a clear textual format (for example: 3 weeks and 4 days).",
+      tech: ["Java"],
+      image: "/weeksCalculator.png",
       link: "f",
-      github: "#",
-      status: "red"
+      github: "https://github.com/kmieczkowska/WeeksCalculator",
+      status: "green"
     }
   ];
 
