@@ -11,7 +11,7 @@ const PortfolioSection = () => {
     {
       title: "My personal website",
       description: "My personal website, created to display my profile, skills and projects. Built with a focus on modern UI/UX and clean code",
-      tech: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
+      tech: ["React", "Next.js", "Tailwind CSS", "Framer Motion", "VSC"],
       image: "/wpp1.png",
       link: "#",
       github: "#",
@@ -20,16 +20,46 @@ const PortfolioSection = () => {
     {
       title: "PathFinderSoftware",
       description: "This project focuses on the analysis and comparison of image sensors and data processing architectures used in navigation systems. A mobile robot was employed as the main research platform, supported by a webcam and infrared sensors. The study included optimization of image quality and sensor data accuracy, followed by the development and testing of various image processing strategies. The results were used to compare the effectiveness of individual solutions in navigation applications.",
-      tech: ["Java", "Jupyter Notebook"],
-      image: "/connect_torobot.png",
+      tech: ["Java OpenJDK 23", "OpenCv","Jupyter Notebook", "Inteliij IDEA"],
+      image: "/robot.png",
       link: "f",
       github: "https://github.com/kmieczkowska/PathFinderSofware",
       status: "green"
     },
     {
+      title: "TesterPathFinder",
+      description: "The TesterPathFinder application was developed as a diagnostic and testing tool to support the development and verification of the robot's primary control system, PathFinderSoftware. Its core functions include receiving a video stream from the robot's control unit, visualizing the camera feed, and providing the user with tools to manage the connection and event logging.",
+      tech: ["Java", "Javafx","SceneBuilder","TCP", "Inteliij IDEA"],
+      image: "/connect_torobot.png",
+      link: "f",
+      github: "https://github.com/kmieczkowska/TesterPathFinder",
+      status: "green"
+    },
+ {
+  title: "DzwiekowaMapaBialegostoku",
+  description: `The thesis was devoted to the implementation of a mobile application within the framework
+of the project "Sounds of the City of Bialystok" adapted to phones and other electrical devices
+running on the Android operating system. In the section devoted to applications with similar
+themes, general information on existing mobile applications with functionalities similar to the
+project I am implementing is presented and discussed along with a proposal for the
+implementation of the project. Subsequently, the Application Design section describes the
+requirements for the thesis topic and the presentation of the use of data in the initial state of the
+project.
+The implementation section covers the use of MVC architecture in the project.
+In the discussion of the libraries used, the libraries used in the application are briefly introduced
+and explained, followed by an example of their use in the code of the mobile application Finally,
+plans for the development of the application and a summary of the completed work
+are presented.`, 
+  tech: ["Java", "Android studio"],
+  image: "/mapa.png",
+  link: "https://dzwiekowamapabialegostoku.pb.edu.pl/",
+  github: "https://github.com/kmieczkowska/SoundMapMobile",
+  status: "green"
+},
+    {
       title: "Jajkolator",
-      description: "An application designed to calculate the profitability of chicken farming. The application accepts input data such as: egg price, number of eggs, hatch rate (%), feed tonnage, feed price per ton, and other operating costs. Based on this data, the application calculates the daily profit, as well as the weekly and monthly profit.",
-      tech: ["Java"],
+      description: "A custom business application developed for a poultry farm company to calculate the profitability of chicken farming operations. The application uses operational and financial data (egg price, number of eggs, hatch rate, feed costs, and other expenses) to generate daily, weekly, and monthly profit estimates.",
+      tech: ["Java", "Android studio"],
       image: "/jajkulator.png",
       link: "f",
       github: "https://github.com/kmieczkowska/Jajkulator",
@@ -38,10 +68,19 @@ const PortfolioSection = () => {
     {
       title: "WeeksCalculator",
       description: "An application designed to calculate the number of weeks and days between selected dates. The application allows the user to choose a start date and an end date, then displays the time interval in a clear textual format (for example: 3 weeks and 4 days).",
-      tech: ["Java"],
+      tech: ["Java", "Android studio"],
       image: "/weeksCalculator.png",
       link: "f",
       github: "https://github.com/kmieczkowska/WeeksCalculator",
+      status: "green"
+    },
+    {
+      title: "Liczydlo",
+      description: "This application automates merging and synchronizing data between two Excel files. It updates linked values and ensures data integrity by automatically appending missing columns to the destination file, mapped to the correct record",
+      tech: ["C#", "Windows Forms"],
+      image: "/me.png",
+      link: "f",
+      github: "https://github.com/kmieczkowska/AgaXcel",
       status: "green"
     }
   ];
