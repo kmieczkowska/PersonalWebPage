@@ -44,3 +44,4 @@ To do:
 - dodać portfolia
 - dodac obrazek w powiekszeniu portfolio
 - dodac zdjecie na stronie main
+- test
