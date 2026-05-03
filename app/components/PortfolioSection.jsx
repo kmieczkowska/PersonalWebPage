@@ -35,27 +35,15 @@ const PortfolioSection = () => {
       github: "https://github.com/kmieczkowska/TesterPathFinder",
       status: "green"
     },
- {
-  title: "DzwiekowaMapaBialegostoku",
-  description: `The thesis was devoted to the implementation of a mobile application within the framework
-of the project "Sounds of the City of Bialystok" adapted to phones and other electrical devices
-running on the Android operating system. In the section devoted to applications with similar
-themes, general information on existing mobile applications with functionalities similar to the
-project I am implementing is presented and discussed along with a proposal for the
-implementation of the project. Subsequently, the Application Design section describes the
-requirements for the thesis topic and the presentation of the use of data in the initial state of the
-project.
-The implementation section covers the use of MVC architecture in the project.
-In the discussion of the libraries used, the libraries used in the application are briefly introduced
-and explained, followed by an example of their use in the code of the mobile application Finally,
-plans for the development of the application and a summary of the completed work
-are presented.`, 
-  tech: ["Java", "Android studio"],
-  image: "/mapa.png",
-  link: "https://dzwiekowamapabialegostoku.pb.edu.pl/",
-  github: "https://github.com/kmieczkowska/SoundMapMobile",
-  status: "green"
-},
+    {
+      title: "Dźwiękowa Mapa Białegostoku",
+      description: "Sounds of the City of Bialystok is a native Android application designed and implemented to provide an immersive auditory exploration of the urban environment through modern mobile devices. The project began with a comprehensive analysis of the existing mobile landscape, which allowed for the identification of key functional gaps and the formulation of a unique value proposition. During the design phase, I established rigorous technical requirements and structured the initial data architecture to ensure a seamless user experience. The application’s core is built on the MVC (Model-View-Controller) architecture, ensuring a clean separation of logic and a maintainable codebase. To enhance the platform's performance, I integrated and optimized several industry-standard libraries, documenting their practical implementation through efficient code patterns. The project concludes with a strategic roadmap for future scalability and a summary of the development milestones achieved during the transition from concept to a fully functional mobile solution.", 
+      tech: ["Java", "MVC", "Android studio"],
+      image: "/mapa.png",
+      link: "https://dzwiekowamapabialegostoku.pb.edu.pl/",
+      github: "https://github.com/kmieczkowska/SoundMapMobile",
+      status: "green"
+    },
     {
       title: "Jajkolator",
       description: "A custom business application developed for a poultry farm company to calculate the profitability of chicken farming operations. The application uses operational and financial data (egg price, number of eggs, hatch rate, feed costs, and other expenses) to generate daily, weekly, and monthly profit estimates.",
