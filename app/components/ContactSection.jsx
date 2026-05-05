@@ -20,7 +20,7 @@ const ContactSection = () => {
     },
     { 
       Icon: Linkedin, 
-      href: "https://www.linkedin.com/in/klaudia-mieczkowska-b6a1862a7/", 
+      href: "https://www.linkedin.com/in/klaudia-mieczkowska01/", 
       label: "LinkedIn" 
     },
     { 
