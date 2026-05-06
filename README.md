@@ -36,3 +36,9 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
 
+To do:
+- add photo
+- add certificats section
+- add email me section handler
+- add download cv option tu cv button
+  
