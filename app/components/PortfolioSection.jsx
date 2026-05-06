@@ -12,7 +12,7 @@ const PortfolioSection = () => {
   {
     title: "My personal website",
     description: "My personal website, created to display my profile, skills and projects. Built with a focus on modern UI/UX and clean code",
-    tech: ["React", "Next.js", "Tailwind CSS", "Framer Motion", "VSC"],
+    tech: ["React","CSS", "Next.js", "Tailwind CSS", "Framer Motion", "VSC"],
     images: ["/wpp1.png"],
     link: "#",
     github: "#",

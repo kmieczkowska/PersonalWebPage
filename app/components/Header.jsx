@@ -24,7 +24,7 @@ const Header = () => {
           
       <div className="relative flex flex-col items-center z-50">
         <Link 
-          href="/cv_tester_k.mieczkowska.pdf" 
+          href="/Cv_KMieczkowska.pdf" 
           target="_blank" 
           rel="noopener noreferrer"
           className="transition-transform hover:scale-110"
@@ -34,9 +34,7 @@ const Header = () => {
 
         {/* POWIĘKSZONY WSKAŹNIK (Strzałka i tekst) */}
         <div className="absolute top-9 flex flex-col items-center pointer-events-none z-[60]">
-          <ArrowUp className="w-6 h-6 text-yellow-400 animate-bounce" />
-          
-          {/* WIĘKSZY TEKST - dodano !text-yellow-400 i wyższy z-index */}
+          <ArrowUp className="w-6 h-6 text-yellow-400 animate-bounce" />          
           <span className="!text-yellow-400 font-mono text-m uppercase font-bold tracking-tight whitespace-nowrap bg-[#0C0C0C] px-2 py-0.5 rounded-md border border-yellow-400/20 animate-bounce">
             get my cv
           </span>
