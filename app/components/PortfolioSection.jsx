@@ -2,11 +2,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, Code2, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ExternalLink, Github, Code2, X, ChevronLeft, ChevronRight, Award } from 'lucide-react';
 
 const PortfolioSection = () => {
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null); // Zmienione z selectedProject na ogólne
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [activeTab, setActiveTab] = useState('projects');
 
   const projects = [
   {
@@ -72,145 +73,164 @@ const PortfolioSection = () => {
     github: "https://github.com/kmieczkowska/AgaXcel",
     status: "green"
   }
+
 ];
+  const certificates = [
+    {
+      type: 'certificate',
+      title: "Certyfikat 1",
+      issuer: "Udemy / Google",
+      date: "2024",
+      description: "Opis zdobytych umiejętności w ramach kursu.",
+      images: ["/cert1.png"], // Tutaj dodaj ścieżkę do zdjęcia certyfikatu
+      tech: ["React", "Security"]
+    },
+    {
+        type: 'certificate',
+        title: "Certyfikat 2",
+        issuer: "Coursera",
+        date: "2023",
+        description: "Szczegółowe szkolenie z zakresu Java Development.",
+        images: ["/cert2.png"],
+        tech: ["Java", "Algorithms"]
+      }
+  ];
 
   const nextImage = useCallback((e) => {
     if (e) e.stopPropagation();
-    setCurrentImageIndex((prev) => (prev + 1) % selectedProject.images.length);
-  }, [selectedProject]);
+    setCurrentImageIndex((prev) => (prev + 1) % selectedItem.images.length);
+  }, [selectedItem]);
 
   const prevImage = useCallback((e) => {
     if (e) e.stopPropagation();
-    setCurrentImageIndex((prev) => (prev - 1 + selectedProject.images.length) % selectedProject.images.length);
-  }, [selectedProject]);
+    setCurrentImageIndex((prev) => (prev - 1 + selectedItem.images.length) % selectedItem.images.length);
+  }, [selectedItem]);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (!selectedProject) return;
-      if (e.key === 'Escape') setSelectedProject(null);
-      if (selectedProject.images.length > 1) {
+      if (!selectedItem) return;
+      if (e.key === 'Escape') setSelectedItem(null);
+      if (selectedItem.images.length > 1) {
         if (e.key === 'ArrowRight') nextImage();
         if (e.key === 'ArrowLeft') prevImage();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedProject, nextImage, prevImage]);
+  }, [selectedItem, nextImage, prevImage]);
 
   useEffect(() => {
-    if (selectedProject) {
+    if (selectedItem) {
       document.body.style.overflow = 'hidden';
       setCurrentImageIndex(0);
     } else {
       document.body.style.overflow = 'unset';
     }
-  }, [selectedProject]);
+  }, [selectedItem]);
 
   return (
     <section className="w-full py-24 text-white bg-[#0C0C0C]">
       <div className="max-w-6xl mx-auto px-6">
+              
+      {/* Header */}
+      <motion.div 
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-center mb-12 flex flex-col items-center"
+      >
+        <h2 className="text-4xl font-bold mb-4 tracking-tight whitespace-nowrap">
+          Past Project <span className="text-yellow-500">Experience</span>
+        </h2>
+        <p className="text-gray-400 font-mono text-sm w-full">
+          // A selection of my work where code meets quality assurance.
+        </p>
+        <div className="mt-6 flex justify-center">
+            <div className="h-1 w-20 bg-gradient-to-r from-yellow-600 to-yellow-400 rounded-full" />
+        </div>
         
-        {/* Header */}
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-20"
-        >
-          <h2 className="text-4xl font-bold mb-4 tracking-tight">
-            Past Project <span className="text-yellow-500">Experience</span>
-          </h2>
-          <p className="text-gray-400 font-mono text-sm max-w-md mx-auto">
-            // A selection of my work where code meets quality assurance.
-          </p>
-          <div className="mt-6 flex justify-center">
-             <div className="h-1 w-20 bg-gradient-to-r from-yellow-600 to-yellow-400 rounded-full" />
-          </div>
-        </motion.div>
+        {/* Tabs Switcher */}
+        <div className="flex justify-center gap-4 mt-8">
+          <button 
+            onClick={() => setActiveTab('projects')}
+            className={`px-6 py-2 rounded-full font-mono text-sm transition-all ${activeTab === 'projects' ? 'bg-yellow-500 text-black' : 'bg-white/5 text-gray-400 hover:bg-white/10'}`}
+          >
+            [ Projects ]
+          </button>
+          <button 
+            onClick={() => setActiveTab('certificates')}
+            className={`px-6 py-2 rounded-full font-mono text-sm transition-all ${activeTab === 'certificates' ? 'bg-yellow-500 text-black' : 'bg-white/5 text-gray-400 hover:bg-white/10'}`}
+          >
+            [ Certificates ]
+          </button>
+        </div>
+      </motion.div>
 
-        {/* Grid projektów */}
+        {/* Content Grid */}
         <motion.div 
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+          key={activeTab}
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {projects.map((project, index) => {
-            const isGreen = project.status === "green";
-            const statusColor = isGreen ? "text-green-500 hover:text-green-400" : "text-red-500 hover:text-red-400";
-            const showLiveDemo = project.link !== "f";
+          {(activeTab === 'projects' ? projects : certificates).map((item, index) => (
+            <motion.div 
+              key={index} 
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: index * 0.1 }}
+              onClick={() => setSelectedItem(item)}
+              className="group relative bg-[#161616] border border-white/5 rounded-3xl overflow-hidden hover:shadow-[0_20px_50px_rgba(255,215,0,0.05)] transition-all duration-500 cursor-pointer"
+            >
+              <div className="relative h-52 w-full overflow-hidden">
+                <Image
+                  src={item.images[0]}
+                  alt={item.title}
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out opacity-80 group-hover:opacity-100"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#161616] to-transparent opacity-80" />
+              </div>
 
-            return (
-              <motion.div 
-                key={index} 
-                variants={{ hidden: { y: 20, opacity: 0 }, visible: { y: 0, opacity: 1 } }}
-                onClick={() => setSelectedProject(project)}
-                className="group relative bg-[#161616] border border-white/5 rounded-3xl overflow-hidden hover:shadow-[0_20px_50px_rgba(255,215,0,0.05)] transition-all duration-500 cursor-pointer"
-              >
-                <div className="relative h-52 w-full overflow-hidden">
-                  <Image
-                    src={project.images[0]}
-                    alt={project.title}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out opacity-80 group-hover:opacity-100"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#161616] to-transparent opacity-80" />
+              <div className="p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  {item.type === 'project' ? <Code2 size={16} className="text-yellow-500" /> : <Award size={16} className="text-yellow-500" />}
+                  <h3 className="text-lg font-bold text-gray-100 group-hover:text-white transition-colors uppercase tracking-tighter">
+                    {item.title}
+                  </h3>
+                </div>
+                <p className="text-gray-400 text-xs leading-relaxed mb-6 line-clamp-2 font-mono">
+                  {item.type === 'certificate' ? `${item.issuer} • ${item.date}` : item.description}
+                </p>
+                
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {item.tech.slice(0, 3).map((t, i) => (
+                    <span key={i} className="text-[10px] px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-gray-400">
+                      {t}
+                    </span>
+                  ))}
                 </div>
 
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Code2 size={16} className="text-yellow-500" />
-                    <h3 className="text-lg font-bold text-gray-100 group-hover:text-white transition-colors">
-                      {project.title}
-                    </h3>
-                  </div>
-                  <p className="text-gray-400 text-xs leading-relaxed mb-6 line-clamp-2 font-mono">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tech.slice(0, 3).map((t, i) => (
-                      <span key={i} className="text-[10px] px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-gray-400">
-                        {t}
-                      </span>
-                    ))}
-                    {project.tech.length > 3 && <span className="text-[10px] text-gray-600">+{project.tech.length - 3}</span>}
-                  </div>
-                  <div className="flex items-center justify-end gap-4 pt-4 border-t border-white/5">
-                    <a 
-                      href={project.github} 
-                      onClick={(e) => e.stopPropagation()}
-                      className={`flex items-center gap-2 text-xs font-mono transition-colors group/link ${statusColor}`}
-                    >
-                      <Github size={18} />
-                      <span className="hidden group-hover/link:block font-bold tracking-tight">Code</span>
-                    </a>
-                    {showLiveDemo && (
-                      <a 
-                        href={project.link} 
-                        onClick={(e) => e.stopPropagation()}
-                        className={`flex items-center gap-2 text-xs font-mono transition-colors group/link ${statusColor}`}
-                      >
-                        <ExternalLink size={18} />
-                        <span className="hidden group-hover/link:block font-bold tracking-tight">Live</span>
-                      </a>
-                    )}
-                  </div>
+                <div className="flex items-center justify-end pt-4 border-t border-white/5">
+                    <span className="text-[10px] font-mono text-yellow-500/50 group-hover:text-yellow-500 transition-colors">
+                        VIEW DETAILS →
+                    </span>
                 </div>
-              </motion.div>
-            );
-          })}
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
 
-        {/* Modal Galeria */}
+        {/* Modal (Działa dla obu typów) */}
         <AnimatePresence>
-          {selectedProject && (
+          {selectedItem && (
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="fixed inset-0 bg-black/95 backdrop-blur-sm z-[100] flex items-center justify-center p-4 md:p-8"
-              onClick={() => setSelectedProject(null)}
+              onClick={() => setSelectedItem(null)}
             >
               <motion.div 
                 initial={{ scale: 0.95, opacity: 0, y: 20 }}
@@ -219,7 +239,7 @@ const PortfolioSection = () => {
                 className="bg-[#121212] w-full max-w-6xl max-h-[90vh] rounded-[2rem] overflow-hidden border border-white/10 flex flex-col md:flex-row shadow-2xl"
                 onClick={(e) => e.stopPropagation()}
               >
-                {/* Galeria zdjęć */}
+                {/* Lewa strona: Obraz */}
                 <div className="relative w-full md:w-3/5 h-[300px] md:h-auto bg-[#0a0a0a]">
                   <AnimatePresence mode="wait">
                     <motion.div
@@ -227,79 +247,59 @@ const PortfolioSection = () => {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="relative w-full h-full p-4 flex items-center justify-center"
+                      className="relative w-full h-full flex items-center justify-center"
                     >
                       <Image 
-                        src={selectedProject.images[currentImageIndex]} 
-                        alt="Project screenshot"
+                        src={selectedItem.images[currentImageIndex]} 
+                        alt="Preview"
                         fill
                         className="object-contain p-4 md:p-8"
                       />
                     </motion.div>
                   </AnimatePresence>
-
-                  {selectedProject.images.length > 1 && (
-                    <>
-                      <button onClick={prevImage} className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/50 hover:bg-yellow-500 text-white transition-all border border-white/5 shadow-lg"><ChevronLeft size={24} /></button>
-                      <button onClick={nextImage} className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/50 hover:bg-yellow-500 text-white transition-all border border-white/5 shadow-lg"><ChevronRight size={24} /></button>
-                      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
-                        {selectedProject.images.map((_, i) => (
-                          <div key={i} className={`h-1.5 rounded-full transition-all duration-300 ${i === currentImageIndex ? 'w-8 bg-yellow-500' : 'w-2 bg-white/20'}`} />
-                        ))}
-                      </div>
-                    </>
+                  
+                  {selectedItem.images.length > 1 && (
+                    <div className="absolute inset-0 flex items-center justify-between px-4">
+                        <button onClick={prevImage} className="p-3 rounded-full bg-black/50 hover:bg-yellow-500 transition-all"><ChevronLeft size={24} /></button>
+                        <button onClick={nextImage} className="p-3 rounded-full bg-black/50 hover:bg-yellow-500 transition-all"><ChevronRight size={24} /></button>
+                    </div>
                   )}
                 </div>
 
-                {/* Opis projektu */}
-                <div className="w-full md:w-2/5 p-8 md:p-12 flex flex-col h-full overflow-y-auto bg-gradient-to-br from-[#121212] to-[#1a1a1a]">
+                {/* Prawa strona: Info */}
+                <div className="w-full md:w-2/5 p-8 md:p-12 flex flex-col h-full overflow-y-auto">
                   <div className="flex justify-between items-start mb-8">
-                    <h2 className="text-3xl font-bold text-white tracking-tight">{selectedProject.title}</h2>
-                    <button onClick={() => setSelectedProject(null)} className="p-3 bg-white/5 hover:bg-white/10 rounded-2xl transition-colors text-gray-400 hover:text-white">
-                      <X size={20} />
-                    </button>
+                    <div>
+                        <h2 className="text-3xl font-bold text-white mb-1">{selectedItem.title}</h2>
+                        {selectedItem.issuer && <p className="text-yellow-500 font-mono text-sm">{selectedItem.issuer} | {selectedItem.date}</p>}
+                    </div>
+                    <button onClick={() => setSelectedItem(null)} className="p-3 bg-white/5 rounded-2xl hover:text-yellow-500"><X size={20} /></button>
                   </div>
 
                   <div className="space-y-8 flex-grow">
                     <section>
-                      <h4 className="text-xs font-bold text-yellow-500/80 tracking-widest mb-4">Project Overview</h4>
-                      <p className="text-gray-300 font-mono text-sm leading-relaxed">
-                        {selectedProject.description}
-                      </p>
+                      <h4 className="text-xs font-bold text-yellow-500/80 tracking-widest mb-4 uppercase">{selectedItem.type === 'project' ? 'Project Overview' : 'Certification Info'}</h4>
+                      <p className="text-gray-300 font-mono text-sm leading-relaxed">{selectedItem.description}</p>
                     </section>
 
                     <section>
-                      <h4 className="text-xs font-bold text-yellow-500/80 tracking-widest mb-4">Stack</h4>
+                      <h4 className="text-xs font-bold text-yellow-500/80 tracking-widest mb-4 uppercase">Skills / Tools</h4>
                       <div className="flex flex-wrap gap-2">
-                        {selectedProject.tech.map((t, i) => (
-                          <span key={i} className="text-[11px] px-3 py-1.5 bg-white/5 border border-white/10 rounded-xl text-gray-300 font-mono">
-                            {t}
-                          </span>
+                        {selectedItem.tech.map((t, i) => (
+                          <span key={i} className="text-[11px] px-3 py-1.5 bg-white/5 border border-white/10 rounded-xl text-gray-300 font-mono">{t}</span>
                         ))}
                       </div>
                     </section>
                   </div>
-                  <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row gap-4">
-                    <a 
-                      href={selectedProject.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 py-4 px-6 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl transition-all font-mono text-xs tracking-widest"
-                    >
-                      <Github size={16} /> Source Code
-                    </a>
-                    {selectedProject.link !== "f" && (
-                      <a 
-                        href={selectedProject.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-2 py-4 px-6 bg-yellow-500 hover:bg-yellow-400 text-[#0c0c0c] rounded-2xl transition-all font-bold text-xs tracking-widest shadow-[0_10px_20px_rgba(234,179,8,0.2)]"
-                      >
-                        <ExternalLink size={16} /> Live Demo
-                      </a>
-                    )}
-                  </div>
+
+                  {selectedItem.type === 'project' && (
+                    <div className="mt-12 pt-8 border-t border-white/10 flex gap-4">
+                        <a href={selectedItem.github} target="_blank" className="flex-1 flex items-center justify-center gap-2 py-4 bg-white/5 rounded-2xl text-xs font-mono"><Github size={16} /> Code</a>
+                        {selectedItem.link !== "f" && (
+                            <a href={selectedItem.link} target="_blank" className="flex-1 flex items-center justify-center gap-2 py-4 bg-yellow-500 text-black rounded-2xl font-bold text-xs"><ExternalLink size={16} /> Live</a>
+                        )}
+                    </div>
+                  )}
                 </div>
               </motion.div>
             </motion.div>
