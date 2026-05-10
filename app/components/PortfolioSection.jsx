@@ -78,12 +78,12 @@ const PortfolioSection = () => {
   const certificates = [
     {
       type: 'certificate',
-      title: "Certyfikat 1",
-      issuer: "Udemy / Google",
-      date: "2024",
-      description: "Opis zdobytych umiejętności w ramach kursu.",
-      images: ["/cert1.png"], // Tutaj dodaj ścieżkę do zdjęcia certyfikatu
-      tech: ["React", "Security"]
+      title: "British Council EnglishScore - B2 Upper Intermediate",
+      issuer: "British Council",
+      date: "03.2023",
+      description: "B2",
+      images: ["/b2eng.jpg"],
+      tech: ["English", "B2"]
     },
     {
         type: 'certificate',
