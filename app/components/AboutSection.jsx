@@ -116,13 +116,14 @@ const AboutSection = () => {
         <div className="flex flex-col md:flex-row items-center md:items-start gap-12">
           <div className="shrink-0">
             <div className="w-44 h-44 md:w-60 md:h-60 relative border-2 border-[#FFD700]/30 rounded-full overflow-hidden bg-[#1a1a1a] shadow-2xl">
-              <Image
-                src="/raven.jpg"
-                alt="Avatar"
-                fill
-                priority
-                className="object-cover"
-              />
+          <Image
+          src="/ja.jpg"
+          alt="Avatar"
+          width={1284}
+          height={2282}
+          className="object-cover w-full h-full object-[center_25%]"
+          priority
+        />
             </div>
           </div>
 

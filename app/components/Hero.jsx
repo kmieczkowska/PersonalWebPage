@@ -5,7 +5,7 @@ import { motion } from 'framer-motion' // Importujemy motion
 import { FileText, ArrowUp } from 'lucide-react'
 
 const Hero = () => {
-  const words = ['Manual Tester', 'Programming Trainer', 'Full-stack Developer']
+  const words = ['Software tester', 'Programming Trainer', 'Full-stack Developer']
   const [text, setText] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
   const [wordIndex, setWordIndex] = useState(0)
@@ -67,7 +67,7 @@ const Hero = () => {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="relative shrink-0"
       >
-        {/* Blask w tle - pulsujący animacją Framer Motion */}
+        {/* Blask w tle */}
         <motion.div 
           animate={{ 
             scale: [1, 1.1, 1],
@@ -81,15 +81,17 @@ const Hero = () => {
           className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-yellow-400/20 blur-[120px] rounded-full"
         />
 
-        <div className="w-80 h-80 md:w-100 md:h-100 rounded-full border-4 border-yellow-400 overflow-hidden shadow-[0_0_60px_20px_rgba(250,204,21,0.3)] hover:shadow-[0_0_80px_30px_rgba(250,204,21,0.5)] transition-shadow duration-500">
-          <Image
-            src="/raven.jpg"
-            alt="Avatar"
-            width={400}
-            height={400}
-            className="object-cover w-full h-full"
-          />
-        </div>
+        {/* Okrągły kontener */}
+      <div className="w-80 h-80 md:w-100 md:h-100 rounded-full border-4 border-yellow-400 overflow-hidden shadow-[0_0_60px_20px_rgba(250,204,21,0.3)] hover:shadow-[0_0_80px_30px_rgba(250,204,21,0.5)] transition-shadow duration-500 bg-[#0C0C0C]">
+        <Image
+          src="/ja.jpg"
+          alt="Avatar"
+          width={1284}
+          height={2282}
+          className="object-cover w-full h-full object-[center_25%]" // Kluczowa zmiana tutaj
+          priority
+        />
+      </div>
       </motion.div>
 
     </section>
