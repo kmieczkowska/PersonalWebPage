@@ -117,7 +117,7 @@ const AboutSection = () => {
           <div className="shrink-0">
             <div className="w-44 h-44 md:w-60 md:h-60 relative border-2 border-[#FFD700]/30 rounded-full overflow-hidden bg-[#1a1a1a] shadow-2xl">
           <Image
-          src="/ja.jpg"
+          src="/ja.png"
           alt="Avatar"
           width={1284}
           height={2282}

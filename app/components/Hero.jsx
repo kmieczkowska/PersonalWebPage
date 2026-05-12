@@ -84,7 +84,7 @@ const Hero = () => {
         {/* Okrągły kontener */}
       <div className="w-80 h-80 md:w-100 md:h-100 rounded-full border-4 border-yellow-400 overflow-hidden shadow-[0_0_60px_20px_rgba(250,204,21,0.3)] hover:shadow-[0_0_80px_30px_rgba(250,204,21,0.5)] transition-shadow duration-500 bg-[#0C0C0C]">
         <Image
-          src="/ja.jpg"
+          src="/ja.png"
           alt="Avatar"
           width={1284}
           height={2282}
