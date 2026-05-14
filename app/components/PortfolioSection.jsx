@@ -81,20 +81,38 @@ const PortfolioSection = () => {
       title: "British Council EnglishScore - B2 Upper Intermediate",
       issuer: "British Council",
       date: "03.2023",
-      description: "B2",
+      description: "B2 | You can check it there: https://www.englishscore.com/verify/  ",
       images: ["/b2eng.jpg"],
       tech: ["English", "B2"]
     },
     {
+      type: 'certificate',
+      title: "Full Android Development Masterclass",
+      issuer: "Udemy",
+      date: "04.2026",
+      description: "Master the art of building professional apps by learning Java and modern architecture through hands-on, industry-focused projects. This masterclass takes you from foundational coding to developing high-performance applications tailored for corporate environments and enterprise solutions",
+      images: ["/android_course.png"],
+      tech: ["Java", "Android Studio"]
+    },
+    {
+      type: 'certificate',
+      title: "Analiza i przetwarzanie obrazów biometrycznych",
+      issuer: "NAVOICA",
+      date: "01.2022",
+      description: "Kurs analizy i przetwarzania obrazów biometrycznych",
+      images: ["/CCNA.png"],
+      tech: ["Python", "MatLab"]
+      },
+      {
         type: 'certificate',
-        title: "Certyfikat 2",
-        issuer: "Coursera",
-        date: "2023",
-        description: "Szczegółowe szkolenie z zakresu Java Development.",
-        images: ["/cert2.png"],
-        tech: ["Java", "Algorithms"]
+        title: "CCNA: Switching, Routing, and Wireless Essentials",
+        issuer: "Cisco Networking Academy",
+        date: "02.2025",
+        description: "The course focuses on the practical configuration of switches, routers, and wireless networks (WLAN) in small to medium-sized networks, covering security, VLANs, and wireless fundamentals",
+        images: ["/biometria.png"],
+        tech: ["Cisco"]
       }
-  ];
+];
 
   const nextImage = useCallback((e) => {
     if (e) e.stopPropagation();
