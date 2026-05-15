@@ -55,7 +55,7 @@ const PortfolioSection = () => {
       title: "Jajkolator",
       description: "A custom business application developed for a poultry farm company to calculate the profitability of chicken farming operations. The application uses operational and financial data to generate daily, weekly, and monthly profit estimates.",
       tech: ["Java", "Android studio"],
-      images: ["/jajkulator.png", "/me.png"],
+      images: ["/jajkulator.png", "/jajkolator2.png"],
       link: "f",
       github: "https://github.com/kmieczkowska/Jajkulator",
       status: "green"
@@ -65,7 +65,7 @@ const PortfolioSection = () => {
       title: "WeeksCalculator",
       description: "An application designed to calculate the number of weeks and days between selected dates. The application allows the user to choose a start date and an end date, then displays the time interval in a clear textual format.",
       tech: ["Java", "Android studio"],
-      images: ["/weeksCalculator.png"],
+      images: ["/weeksCalculator.png", "/wc2.png","/wc3.png","/wc4.png","/wc5.png"],
       link: "f",
       github: "https://github.com/kmieczkowska/WeeksCalculator",
       status: "green"
